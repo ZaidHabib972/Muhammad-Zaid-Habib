@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Muhammad Zaid — Web Developer & Data Analyst</title>
+
+  <!-- PRELOAD FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<style>
+:root{
+  --bg:#f8f9fa;
+  --card:#ffffff;
+  --muted:black;
+  --accent:#0f62fe;
+  --accent-2:#00bcd4;
+  --glass: rgba(15,98,254,0.06);
+  --soft-shadow: 0 8px 30px rgba(15,98,254,0.06);
+}
+
+/* BASE STYLES */
+html, body { height: 100%; overflow-x: hidden; margin:0; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(180deg, #f8f9fa 0%, #e9f2ff 50%);
+  color: #0f1724;
+  -webkit-font-smoothing: antialiased;
+  line-height: 2;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* NAVBAR */
+.navbar {
+  background: rgba(248,249,250,0.85);
+  backdrop-filter: blur(6px);
+  border-bottom:1px solid rgba(16,24,40,0.08);
+}
+.navbar .brand {
+  font-family:'Orbitron';
+  color: var(--accent);
+  font-size: 1.15rem;
+  letter-spacing:0.5px;
+}
+.nav-social a {
+  color: var(--muted);
+  margin-left: 12px;
+  transition: all .2s;
+}
+.nav-social a:hover { color: var(--accent-2); transform: translateY(-2px); }
+
+/* HERO */
+.hero {
+  padding: 70px 0 50px;
+  position: relative;
+  overflow: visible;
+  text-align: left;
+}
+.hero .left { padding-top:18px; }
+.hero h1 {
+  font-family:'Orbitron';
+  font-weight:700;
+  font-size:40px;
+  color: var(--accent);
+  margin-bottom:8px;
+}
+.hero p.lead {
+  color: var(--muted);
+  font-size:1.05rem;
+}
+.hero-img-wrap {
+  display:inline-block;
+  padding:12px;
+  border-radius:20px;
+  background: linear-gradient(180deg, rgba(15,98,254,0.08), rgba(0,188,212,0.03));
+  box-shadow: 0 18px 50px rgba(15,98,254,0.08);
+  transform-origin: center;
+  animation: floatHero 5s ease-in-out infinite;
+  width: 100%;
+  max-width:400px;
+  aspect-ratio: 3/4;
+  margin:0 auto;
+  overflow:hidden;
+  clip-path: polygon(50% 0%, 85% 25%, 85% 75%, 50% 100%, 15% 75%, 15% 25%);
+  position: relative;
+}
+.hero-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+@keyframes floatHero {
+  0%{ transform: translateY(0); }
+  50%{ transform: translateY(-12px); }
+  100%{ transform: translateY(0); }
+}
+
+/* BACKGROUND SHAPES */
+.bg-shape {
+  position:absolute;
+  border-radius:40%;
+  filter:blur(60px);
+  opacity:0.16;
+  z-index:0;
+  transform:translate3d(0,0,0);
+}
+.bg-shape.a { width:420px;height:420px;right:-110px;top:10px;background:linear-gradient(120deg,var(--accent),var(--accent-2)); }
+.bg-shape.b { width:300px;height:300px;left:-80px;top:120px;background:linear-gradient(120deg,#a7bfff,#d1f7fd); opacity:0.12; }
+
+/* SECTIONS */
+section { position:relative; z-index:1; padding:60px 0; }
+.card-soft {
+  background: var(--card);
+  border-radius: 14px;
+  box-shadow: var(--soft-shadow);
+  border: 1px solid rgba(16,24,40,0.08);
+}
+
+/* ABOUT CARDS */
+.about-cards-wrap { position: relative; width:100%; height:400px; overflow:hidden; }
+.card-3d-lg, .card-3d-sm {
+  position: absolute;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(2,6,23,0.1);
+}
+.card-3d-lg {
+  top:0; left:20%;
+  width:260px; height:340px;
+  animation: float-lg 6s ease-in-out infinite alternate;
+  z-index:2;
+}
+.card-3d-sm {
+  top:60px; left:40%;
+  width:220px; height:280px;
+  animation: float-sm 8s ease-in-out infinite alternate;
+  z-index:1;
+}
+@keyframes float-lg {
+  0% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-20px) rotate(3deg); }
+  100% { transform: translateY(0) rotate(-3deg); }
+}
+@keyframes float-sm {
+  0% { transform: translateY(0) rotate(3deg); }
+  50% { transform: translateY(-15px) rotate(-3deg); }
+  100% { transform: translateY(0) rotate(3deg); }
+}
+.card-3d-lg img, .card-3d-sm img { width:100%; height:100%; object-fit:cover; }
+
+/* SKILLS */
+.skill {
+  background: linear-gradient(180deg, rgba(15,98,254,0.04), rgba(0,188,212,0.02));
+  border-radius:12px;
+  padding:18px;
+  border:1px solid rgba(15,98,254,0.06);
+}
+
+/* PROJECTS */
+.project-card {
+  transition: transform .25s ease, box-shadow .25s ease;
+  border-radius:12px; overflow:hidden;
+  border:1px solid rgba(16,24,40,0.08); background: var(--card);
+  margin: 0 auto 20px;
+}
+.project-card:hover { transform: translateY(-8px); box-shadow:0 24px 60px rgba(2,6,23,0.08); }
+.project-media { height:180px; object-fit:cover; width:100%; display:block; }
+
+/* CONTACT */
+.contact-box {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 14px;
+  display: flex; gap: 20px;
+  align-items: center;
+  margin-bottom: 21px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.06);
+  transition: all 0.2s ease-in-out;
+}
+.contact-box:hover { box-shadow:0 6px 25px rgba(0,0,0,0.12); transform: translateY(-3px); }
+.icon-circle { width:60px; height:60px; background:#0f62fe; color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+.contact-box h5 { margin:0; font-weight:600; font-size:17px; }
+.contact-box a { text-decoration:none; color:#4d47ff; font-weight:500; font-size:16px; }
+.contact-box p { margin:0; color:#555; font-size:16px; }
+
+/* FOOTER */
+footer {
+  padding:36px 0;
+  color: var(--muted);
+  background: transparent;
+  border-top: 1px solid rgba(16,24,40,0.08);
+  text-align: center;
+}
+
+/* LARGE SCREENS ≥995px */
+@media (min-width: 995px) {
+  #skills { margin-top: 60px; }
+  #about { margin-top: 40px; }
+}
+
+/* MEDIUM / SMALL SCREENS ≤991px */
+@media (max-width: 991px) {
+
+  body, html { overflow-x: hidden; }
+
+  .container, .container-fluid { padding-left: 15px; padding-right: 15px; }
+
+  /* HERO */
+  .hero { padding:50px 15px 30px; text-align:center; }
+  .hero h1 { font-size:28px; line-height:1.3; margin-bottom:15px; }
+  .hero p.lead { font-size:1rem; margin-bottom:20px; }
+  .hero-img-wrap { max-width:300px; margin:0 auto; }
+  .hero-img-wrap img { width:100%; height:auto; }
+
+  /* ABOUT */
+  #about { margin-top:30px; text-align:center; }
+
+  /* SKILLS */
+  #skills { margin-top:60px; text-align:center; }
+  .skills-row { justify-content:center; }
+
+  /* PROJECTS */
+  #projects { margin-top:60px; margin-bottom:30px; text-align:center; }
+  .project-card { width:95%; max-width:450px; margin:0 auto 20px; }
+
+  /* TESTIMONIALS */
+  #testimonials { text-align:center; }
+  .testimonial-card { width:95%; max-width:450px; margin:0 auto 20px; }
+
+  /* CONTACT */
+  #contact { margin-top:40px; text-align:center; }
+  #contact .contact-box { flex-direction:column; justify-content:center; align-items:center; }
+
+  /* NAVBAR */
+  .navbar .nav-social { justify-content:center; margin-top:10px; }
+  .navbar .navbar-nav { text-align:center; margin:0 auto; }
+}
+
+/* MOBILE ≤575px */
+@media(max-width:575px){
+  .hero-img-wrap { max-width:220px; }
+  .hero h1 { font-size:24px; }
+  .hero p.lead { font-size:0.95rem; }
+  .filter-btns { flex-direction:column; gap:10px; }
+  .filter-btns .btn { width:100%; text-align:center; min-width:0; }
+}
+@media(max-width:991px){
+#about .col-lg-5,
+#about .col-lg-6 {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    text-align: center;
+}
+
+.about-main.card-3d-lg,
+.about-main.card-3d-sm {
+    display: none; /* hide 3D cards on mobile */
+}
+  /* Remove About images */
+  .about-main.card-3d-lg,
+  .about-main.card-3d-sm {
+    display: none;
+  }
+#projects{
+  margin-top:-30px;
+}
+  /* Remove text column margin */
+  #about .col-lg-6 {
+    margin-left: 0 !important;
+    text-align: center;
+    margin-top:-500px;
+  }
+
+  /* Fix container padding */
+  #about .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .hero{
+    margin-top:50px;
+  }
+ 
+}
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 30px;
+  z-index: 1000;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp-float img {
+  width: 35px;
+  height: 35px;
+}
+
+/* MOBILE ≤991px */
+@media (max-width: 991px) {
+  html, body {
+    overflow-x: hidden; /* hide horizontal scroll */
+  }
+
+  .navbar .container {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-social {
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  /* Hero images */
+  .hero-img-wrap { max-width: 250px; margin: 0 auto; }
+
+  /* Background shapes */
+  .bg-shape.a, .bg-shape.b {
+    max-width: 80%;
+    max-height: 80%;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* About cards */
+  .about-main.card-3d-lg, .about-main.card-3d-sm { display: none; }
+
+  /* Contact boxes */
+  #contact .contact-box { flex-direction: column; align-items: center; }
+}
+
+
+</style>
+</head>
+<body>
+<a href="https://wa.me/923307974444" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" loading="lazy" />
+</a>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light shadow-sm">
+  <div class="container">
+    <a class="brand navbar-brand" href="#">Muhammad Zaid Habib</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav" aria-controls="siteNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="siteNav">
+      <!-- Links -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#testimonials">Feedback</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+
+      <!-- Social icons -->
+      <div class="nav-social d-flex mt-3 mt-lg-0 justify-content-center justify-content-lg-start gap-3">
+        <a href="https://github.com/ZaidHabib972" target="_blank" aria-label="GitHub"><i class="fab fa-github fa-lg"></i></a>
+        <a href="https://pk.linkedin.com/in/zaid-habib-2b2aa3283?trk=people-guest_people_search-card" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin fa-lg"></i></a>
+        <a href="https://wa.me/923307974444" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp fa-lg"></i></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<div class="bg-shape a"></div>
+<div class="bg-shape b"></div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="row align-items-center gy-4">
+      <div class="col-lg-7 left">
+        <h1>Professional Data Analytics & Web Development</h1>
+        <p class="lead">I build functional web apps using PHP & SQL and create learning dashboards using Excel & Power BI for practice and skill development.</p>
+      </div>
+      <div class="col-lg-5 text-center">
+        <div class="hero-img-wrap">
+          <img src="zaid1.png" alt="Profile" loading="lazy" class="hero-img" >
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about" class="py-5">
+  <div class="container">
+    <div class="row gy-4 align-items-left">
+      <div class="col-lg-5 position-relative" style="min-height: 350px; padding-left:0; margin-left:-40px;">
+        <div class="about-main card-3d-lg position-relative" style="z-index:2; max-width: 80%;">
+          <img src="img 2.png" alt="Main about image" class="img-fluid">
+        </div>
+        <div class="about-main card-3d-sm position-absolute" style="top: 20%; left: 60%; z-index:1; transform: rotate(-10deg); max-width: 50%;">
+          <img src="img 1.png" alt="Secondary" class="img-fluid">
+        </div>
+      </div>
+      <div class="col-lg-6 d-flex flex-column justify-content-center" style="margin-left:60px;">
+        <h2>About Me</h2>
+        <p class="text-muted">
+          I'm a beginner Full-Stack Developer and Data Analyst focusing on building learning projects and dashboards to sharpen my technical skills.
+        </p>
+        <ul class="row g-2 mt-3 list-unstyled">
+          <li class="col-6"><strong>Web Development:</strong> PHP, HTML, CSS, JS</li>
+          <li class="col-6"><strong>Data Analytics:</strong> Excel, Power BI, SQL</li>
+          <li class="col-6"><strong>Data Processing:</strong> Cleaning, Transforming, ETL</li>
+          <li class="col-6"><strong>Experience:</strong> Beginner</li>
+        </ul>
+        <div class="mt-4">
+          <a class="btn btn-outline-primary me-2" href="Muhammad Zaid habib_cv..pdf" download>Download CV</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="pt-0">
+  <div class="container">
+    <div class="row align-items-center gy-4 mb-4">
+      <div class="col-lg-6 d-flex flex-column justify-content-center">
+        <h3>Skills & Services</h3>
+        <p class="text-muted">
+          Currently developing skills in web development and data analytics through practice projects and learning exercises.
+        </p>
+      </div>
+      <div class="col-lg-6 d-flex justify-content-between">
+        <div class="text-center flex-fill mx-2 p-3 card-soft rounded shadow-sm bg-light">
+          <h3 class="display-6 mb-0 counter" data-target="5">0</h3>
+          <small class="text-muted">Learning Projects</small>
+        </div>
+        <div class="text-center flex-fill mx-2 p-3 card-soft rounded shadow-sm bg-light">
+          <h3 class="display-6 mb-0 counter" data-target="250">0</h3>
+          <small class="text-muted">Hours Practiced</small>
+        </div>
+        <div class="text-center flex-fill mx-2 p-3 card-soft rounded shadow-sm bg-light">
+          <h3 class="display-6 mb-0 counter" data-target="0">0</h3>
+          <small class="text-muted">Clients</small>
+        </div>
+      </div>
+    </div>
+    <div class="row g-3 text-center">
+      <div class="col-md-6"><div class="skill p-3 rounded shadow-sm bg-light"><h5>Web Development</h5><small class="text-muted">PHP, HTML, CSS, JS</small></div></div>
+      <div class="col-md-6"><div class="skill p-3 rounded shadow-sm bg-light"><h5>Data Analytics</h5><small class="text-muted">Excel, Power BI, SQL</small></div></div>
+      <div class="col-md-6"><div class="skill p-3 rounded shadow-sm bg-light"><h5>Data Processing</h5><small class="text-muted">Cleaning, Transforming, ETL</small></div></div>
+      <div class="col-md-6"><div class="skill p-3 rounded shadow-sm bg-light"><h5>Dashboards</h5><small class="text-muted">KPIs, Reports, Visual Analysis</small></div></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const counters = document.querySelectorAll('.counter');
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const increment = target / 100;
+      if (count < target) { counter.innerText = Math.ceil(count + increment); setTimeout(updateCount, 30); }
+      else { counter.innerText = target; }
+    };
+    updateCount();
+  });
+</script>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h3>Projects</h3>
+      <div class="filter-btns">
+        <button class="btn btn-sm btn-outline-secondary" data-filter="all">All</button>
+        <button class="btn btn-sm btn-outline-secondary" data-filter="web">Web Dev</button>
+        <button class="btn btn-sm btn-outline-secondary" data-filter="data">Data Analytics</button>
+      </div>
+    </div>
+    <div class="row g-4" id="projectsGrid">
+      <!-- Project 1 -->
+<div class="col-12 col-sm-12 col-md-12 col-lg-4 project-item" data-tags="web">
+        <div class="project-card p-3 h-100">
+          <img class="project-media" src="website.png" alt="Portfolio Builder Project" loading="lazy">
+          <h5 class="mt-3">Perfume Website (Learning Project)</h5>
+          <p class="text-muted">A PHP & MySQL web app to practice user forms, templates, and dynamic content generation.</p>
+          <div class="mt-3">
+            <button class="btn btn-sm btn-primary view-details" data-title="Portfolio Builder Website" data-desc="PHP & MySQL project to practice form handling, templates, and dynamic portfolio generation." data-img="portfolio1.png">View</button>
+          </div>
+        </div>
+      </div>
+      <!-- Project 2 -->
+<div class="col-12 col-sm-12 col-md-12 col-lg-4 project-item" data-tags="web">
+        <div class="project-card p-3 h-100">
+          <img class="project-media" src="dashboard.png" alt="Retail Sales Dashboard" loading="lazy">
+          <h5 class="mt-3">Retail Sales Dashboard (Learning Project)</h5>
+          <p class="text-muted">Excel dashboard for practicing KPIs, sales trends, and regional analysis.</p>
+          <div class="mt-3">
+            <button class="btn btn-sm btn-primary view-details" data-title="Retail Sales Dashboard" data-desc="Excel dashboard project showcasing sales, revenue, regions, and product trends for learning purposes." data-img="dashboard.png">View</button>
+          </div>
+        </div>
+      </div>
+      <!-- Project 3 -->
+<div class="col-12 col-sm-12 col-md-12 col-lg-4 project-item" data-tags="web">
+        <div class="project-card p-3 h-100">
+          <img class="project-media" src="dashboard 2.png" alt="Power BI Learning Project" loading="lazy">
+          <h5 class="mt-3">Excel Dashboard (Learning Project)</h5>
+          <p class="text-muted">Excel dashboard for practicing KPIs, sales trends, and regional analysis</p>
+          <div class="mt-3">
+            <button class="btn btn-sm btn-primary view-details" data-title="Power BI Dashboard" data-desc="Power BI dashboard to practice interactive charts, KPIs, and visualization techniques." data-img="powerbi.png">View</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT MODAL -->
+<div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content card-soft border-0">
+      <div class="modal-body p-4">
+        <div class="row g-4 align-items-center">
+          <div class="col-md-6">
+            <img id="modalImg" src="" alt="project" class="img-fluid rounded">
+          </div>
+          <div class="col-md-6">
+            <h4 id="modalTitle"></h4>
+            <p id="modalDesc" class="text-muted"></p>
+            <div class="mt-3">
+              <a class="btn btn-primary" href="#contact">Discuss Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer border-0">
+        <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <h3>Project Feedback</h3>
+    <div class="row g-3 mt-3">
+      <div class="col-md-6">
+        <div class="card-soft p-3">
+          <p class="mb-2 text-muted">"These learning projects helped me understand PHP, MySQL, and data visualization basics."</p>
+          <strong>Feedback Example</strong><br><small class="text-muted">Self-Learning Project</small>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card-soft p-3">
+          <p class="mb-2 text-muted">"Excel and Power BI dashboards are great practice for understanding KPIs and analytics."</p>
+          <strong>Feedback Example</strong><br><small class="text-muted">Learning Exercise</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="pb-5">
+  <div class="container">
+    <div class="row justify-content-center g-4">
+      <div class="col-lg-12 text-center">
+        <h3>Contact Me</h3>
+        <p class="text-muted">Feel free to reach out using the details below.</p>
+      </div>
+
+      <div class="col-lg-12">
+        <div class="row justify-content-center g-4">
+          <div class="col-md-4 d-flex flex-column align-items-center">
+            <div class="icon-circle mb-2"><i class="fas fa-envelope fa-2x"></i></div>
+            <h5>Email</h5>
+            <a href="mailto:Zaidhabib972@gmail.com">Zaidhabib972@gmail.com</a>
+          </div>
+
+          <div class="col-md-4 d-flex flex-column align-items-center">
+            <div class="icon-circle mb-2"><i class="fas fa-phone fa-2x"></i></div>
+            <h5>Phone</h5>
+            <a href="https://wa.me/923307974444" target="_blank">+92 330 797 4444</a>
+          </div>
+
+          <div class="col-md-4 d-flex flex-column align-items-center">
+            <div class="icon-circle mb-2"><i class="fas fa-map-marker-alt fa-2x"></i></div>
+            <h5>Location</h5>
+            <p class="mb-0">Remote — open to international clients</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="container text-center">
+    <div class="mb-2">Follow me: 
+      <a href="https://github.com/ZaidHabib972" class="ms-2"><i class="fab fa-github"></i></a>
+      <a href="https://pk.linkedin.com/in/zaid-habib-2b2aa3283?trk=people-guest_people_search-card" class="ms-2"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <div>&copy; <?php echo date('Y'); ?> Muhammad Zaid — All rights reserved</div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  // Projects filter
+  const filterBtns = document.querySelectorAll('.filter-btns .btn');
+  const items = document.querySelectorAll('.project-item');
+  filterBtns.forEach(btn=>{
+    btn.addEventListener('click', function(){
+      const f = this.dataset.filter;
+      filterBtns.forEach(b=>b.classList.remove('active'));
+      this.classList.add('active');
+      items.forEach(it=>{
+        if(f === 'all' || it.dataset.tags.includes(f)) it.style.display = '';
+        else it.style.display = 'none';
+      });
+    });
+  });
+
+  // Project details modal
+  $('.view-details').on('click', function(){
+    const t = $(this).data('title');
+    const d = $(this).data('desc');
+    const i = $(this).data('img');
+    $('#modalTitle').text(t);
+    $('#modalDesc').text(d);
+    $('#modalImg').attr('src', i);
+    var myModal = new bootstrap.Modal(document.getElementById('projectModal'));
+    myModal.show();
+  });
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('.nav-link').forEach(a=>{
+    a.addEventListener('click', function(e){
+      if(this.hash){
+        e.preventDefault();
+        document.querySelector(this.hash).scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+
+});
+</script>
+
+</body>
+</html>
