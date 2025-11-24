@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- SEO Meta -->
+  <title>Muhammad Zaid Habib — Web Developer & Data Analyst</title>
+  <meta name="description" content="Muhammad Zaid Habib — Web Developer & Data Analyst. PHP, MariaDB, JavaScript, Power BI, SQL. Based in Pakistan, available for remote work.">
+  <meta name="keywords" content="PHP developer Pakistan, Web developer portfolio, Power BI analyst Pakistan, MariaDB, JavaScript portfolio">
+  <meta name="author" content="Muhammad Zaid Habib">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Muhammad Zaid Habib — Web Developer & Data Analyst">
+  <meta property="og:description" content="PHP & MariaDB developer, Power BI analyst. Check my projects and contact me for freelance work.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zaidhabib972.github.io/Muhammad-Zaid-Habib/">
+  <meta property="og:image" content="/images/placeholder-avatar.jpg">
+
+  <!-- Preconnects & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 (CDN) - lightweight use -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- AOS for scroll animations -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="C:\xampp\htdocs\me\css\styles.css">
+
+  <!-- Theme color for mobile -->
+  <meta name="theme-color" content="#0f62fe">
+</head>
+<style>
+  
+  :root{
+  --bg:#f8f9fa;
+  --card:#ffffff;
+  --muted:#6c757d;
+  --accent:#0f62fe;
+  --accent-2:#00bcd4;
+  --text:#111827;
+  --glass: rgba(15,98,254,0.06);
+}
+
+*{box-sizing:border-box}
+body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.5;color:var(--text);background:var(--bg)}
+
+/* Navbar */
+.logo-zh{width:44px;height:44px;border-radius:8px;background:linear-gradient(120deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+.navbar .nav-link{color:rgba(0,0,0,0.7)}
+
+/* Hero */
+.hero-section{padding-top:4.5rem;padding-bottom:3rem}
+.avatar-wrap{width:220px;height:220px;border-radius:50%;overflow:hidden;border:6px solid #fff;box-shadow:0 10px 30px rgba(12,12,60,0.08)}
+.avatar-img{width:100%;height:100%;object-fit:cover}
+
+/* Cards */
+.card{border-radius:12px}
+
+/* Skills */
+.skill-card{border-radius:12px}
+.skill-list{list-style:none;padding-left:0}
+.skill-list li{padding:6px 0;border-bottom:1px dashed rgba(0,0,0,0.05)}
+
+/* Skill bars */
+.skill-bar{background:#e9ecef;border-radius:8px;overflow:hidden}
+.skill-bar-fill{background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:8px 12px;color:#fff;border-radius:8px}
+
+/* Project cards */
+.project-card img{height:200px;object-fit:cover}
+.featured-project img{height:260px;object-fit:cover}
+
+/* Stats */
+.stat-card{background:var(--card);border-radius:12px}
+.stat-card h3{font-size:2rem;margin:0}
+
+/* Testimonials */
+.testimonial-avatar{object-fit:cover}
+
+/* Responsive tweaks */
+@media (max-width: 991px){
+  .avatar-wrap{width:160px;height:160px}
+}
+
+/* Dark mode support */
+[data-theme='dark']{
+  --bg:#0b1220;--card:#0f1724;--text:#e6eef8;--muted:#9aa6b2
+}
+[data-theme='dark'] body{background:var(--bg);color:var(--text)}
+/* About section text fix for dark mode */
+/* Accessibility focus outlines */
+:focus{outline:3px solid rgba(15,98,254,0.16);outline-offset:3px}
+
+/* Small performance-friendly animations */
+.project-card, .skill-card, .card{transition:transform .28s ease, box-shadow .28s ease}
+.project-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(12,12,60,0.12)}
+
+/* Utility */
+.hidden{display:none}
+
+/* Footer */
+footer{font-size:.9rem}
+
+/* Ensure images are responsive */
+img{max-width:100%;height:auto;display:block}
+[data-theme='dark'] #about,
+[data-theme='dark'] #about * {
+  color: #111827 !important;
+}
+[data-theme="dark"] #testimonials h2 {
+  color: #111827 !important;
+}
+#themeToggle {
+  display: none !important;
+}
+
+</style>
+<script>
+  // Main JS — js/main.js
+// Contains: theme toggle, smooth scroll, counters, form accessibility enhancements
+
+document.addEventListener('DOMContentLoaded', function(){
+  // 1) Set year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // 2) Theme toggle using localStorage
+  const themeToggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const savedTheme = localStorage.getItem('site-theme');
+  if(savedTheme) root.setAttribute('data-theme', savedTheme);
+  themeToggle.addEventListener('click', function(){
+    const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('site-theme', next);
+    themeToggle.setAttribute('aria-pressed', next === 'dark');
+  });
+
+  // 3) Smooth scroll for internal links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e){
+      const target = document.querySelector(this.getAttribute('href'));
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+        history.pushState(null, '', this.getAttribute('href'));
+      }
+    });
+  });
+
+  // 4) Animated counters
+  const counters = document.querySelectorAll('.count');
+  counters.forEach(counter => {
+    const update = () => {
+      const target = +counter.getAttribute('data-target');
+      const current = +counter.innerText;
+      const increment = Math.ceil(target / 100);
+      if(current < target){
+        counter.innerText = current + increment;
+        setTimeout(update, 20);
+      }else{
+        counter.innerText = target + (target >= 100 ? '+' : '');
+      }
+    };
+    // trigger when in viewport
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if(entry.isIntersecting) { update(); obs.disconnect(); } });
+    }, {threshold:0.5});
+    obs.observe(counter);
+  });
+
+  // 5) Basic client-side form validation for accessibility
+  const contactForm = document.getElementById('contactForm');
+  if(contactForm){
+    contactForm.addEventListener('submit', function(e){
+      // simple validation
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const message = document.getElementById('message');
+      if(!name.value.trim() || !email.value.trim() || !message.value.trim()){
+        e.preventDefault();
+        alert('Please fill all required fields.');
+        return false;
+      }
+      // further enhancements: AJAX submit to php endpoint
+    });
+  }
+
+  // 6) Keyboard navigation: ensure focusable elements are clear
+  document.querySelectorAll('a,button,input,textarea').forEach(el => el.setAttribute('tabindex', '0'));
+
+});
+
+</script>
+<body data-theme="dark">
+
+  <!-- NAVBAR -->
+  <header>
+    <nav id="mainNav" class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top" aria-label="Main navigation">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#home">
+          <div class="logo-zh" aria-hidden="true">ZH</div>
+          <span class="ms-2 d-none d-md-inline">Muhammad Zaid Habib</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#stats">Stats</a></li>
+            <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item ms-2">
+              <button id="themeToggle" class="btn btn-outline-secondary btn-sm" aria-pressed="false" aria-label="Toggle dark mode">🌗</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section id="home" class="hero-section py-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-7" data-aos="fade-right">
+            <h1 class="display-5 fw-bold">Hi, I’m <span class="text-primary">Muhammad Zaid Habib</span></h1>
+            <p class="lead mb-3">Web Developer & Data Analyst — I build PHP & MariaDB web apps, interactive dashboards, and data-driven tools that help businesses and creators deliver results.</p>
+            <p class="mb-4">Specialties: <strong>PHP</strong>, <strong>MariaDB</strong>, <strong>JavaScript</strong>, <strong>Power BI</strong>, <strong>SQL</strong></p>
+
+            <div class="d-flex gap-2">
+              <a href="#projects" class="btn btn-primary btn-lg">View Projects</a>
+              <a href="/resume/Muhammad-Zaid-Habib-Resume.pdf" class="btn btn-outline-primary btn-lg" download>Download Resume</a>
+            </div>
+
+            <div class="mt-4 hero-badges d-flex gap-2 flex-wrap">
+              <span class="badge bg-light text-dark">Available for Remote Work</span>
+              <span class="badge bg-light text-dark">Final Year Project: Home Services Website</span>
+              <span class="badge bg-light text-dark">Open to Freelance</span>
+            </div>
+          </div>
+
+          <div class="col-lg-5 text-center" data-aos="fade-left">
+            <div class="avatar-wrap mx-auto">
+              <img src="zaid1.png" alt="Photo of Muhammad Zaid Habib" class="avatar-img rounded-circle" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-5 bg-light">
+      <div class="container" data-aos="fade-up">
+        <div class="row g-4">
+          <div class="col-lg-8">
+            <h2>About Me</h2>
+            <p class="lead">I’m <strong>Muhammad Zaid Habib</strong>, a passionate Web Developer and Data Analyst from Pakistan. I build dynamic, secure PHP applications with MariaDB backends, create responsive frontends using Bootstrap and JavaScript, and design interactive dashboards using Power BI and Excel. I focus on practical, maintainable code and clean user experiences.</p>
+
+            <h3 class="mt-4">What I build</h3>
+            <ul>
+              <li>Full-stack PHP web applications (user auth, dashboards, CRUD systems)</li>
+              <li>Data analysis & reporting dashboards (Power BI, SQL, Excel)</li>
+              <li>Portfolio and landing pages optimized for conversion</li>
+            </ul>
+
+            <h3 class="mt-4">What makes me unique</h3>
+            <p>I blend backend development and data analysis skills — meaning I don’t just build apps, I use data to make them smarter. I enjoy solving real user problems, and I’m always learning newer tools to improve delivery speed and quality.</p>
+
+            <h3 class="mt-4">Goals</h3>
+            <p>Deliver reliable, secure, and user-friendly web applications; contribute to open-source projects; and grow as a data-driven developer while serving international and Pakistan-based clients.</p>
+
+            <p class="mt-3"><strong>Open to:</strong> Remote work, freelance projects, and collaborations. <strong>Location:</strong> Pakistan.</p>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="card p-3 shadow-sm" aria-hidden="false">
+              <h5>Quick Info</h5>
+              <p class="mb-1"><strong>Email:</strong> <a href="mailto:zaidhabib972@gmail.com">zaidhabib972@gmail.com</a></p>
+              <p class="mb-1"><strong>Phone:</strong> +92 330 797 4444</p>
+              <p class="mb-1"><strong>Location:</strong> Pakistan</p>
+              <p class="mb-0"><strong>Resume:</strong> <a href="/resume/Muhammad-Zaid-Habib-Resume.pdf" download>Download PDF</a></p>
+            </div>
+
+            <div class="card mt-3 p-3 shadow-sm">
+              <h6>Highlights</h6>
+              <ul class="mb-0">
+                <li>PHP & MariaDB development</li>
+                <li>Power BI dashboards & SQL</li>
+                <li>Responsive UI with Bootstrap</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-5">
+      <div class="container" data-aos="fade-up">
+        <h2 class="mb-4">Skills</h2>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="skill-card p-3 shadow-sm h-100">
+              <h5>Web Development</h5>
+              <ul class="skill-list mb-0">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Bootstrap</li>
+                <li>JavaScript</li>
+                <li>jQuery</li>
+                <li>PHP</li>
+                <li>MariaDB / SQL</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="skill-card p-3 shadow-sm h-100">
+              <h5>Data Analysis</h5>
+              <ul class="skill-list mb-0">
+                <li>Excel (Pivot, Dashboarding)</li>
+                <li>SQL</li>
+                <li>Power BI</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="skill-card p-3 shadow-sm h-100">
+              <h5>Soft Skills</h5>
+              <ul class="skill-list mb-0">
+                <li>Communication</li>
+                <li>Time Management</li>
+                <li>Team Collaboration</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4" aria-hidden="false">
+          <h6>Skill bars</h6>
+          <div class="skill-bar mt-2"><div class="skill-bar-fill" style="width:70%">Excel — 85%</div></div>
+           <div class="skill-bar mt-2"><div class="skill-bar-fill" style="width:70%">SQL — 80%</div></div>
+           <div class="skill-bar mt-2"><div class="skill-bar-fill" style="width:95%">JavaScript — 70%</div></div><br>
+           <div class="skill-bar" aria-label="PHP skill level">
+            <div class="skill-bar-fill" style="width:80%">PHP — 70%</div>
+          </div>
+          <div class="skill-bar mt-2"><div class="skill-bar-fill" style="width:70%">Power BI — 78%</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-5 bg-light">
+      <div class="container" data-aos="fade-up">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2>Projects</h2>
+          <a href="#" class="btn btn-sm btn-outline-secondary">View All on GitHub</a>
+        </div>
+
+        <!-- Featured Project -->
+        <div class="card featured-project p-4 mb-4 shadow-sm" data-aos="zoom-in">
+          <div class="row g-3">
+            <div class="col-md-5">
+              <img src="portfoliobuilder.png" alt="Final Year Project - Home Services" class="img-fluid rounded" loading="lazy">
+            </div>
+            <div class="col-md-7">
+              <h3>FINAL YEAR PROJECT – Portfolio Builder Web Application</h3> <p><strong>What it does:</strong> A web-based platform that allows users to create personalised portfolio websites without coding. Users can sign up, choose a template, fill out a structured form (personal details, skills, projects, testimonials), and generate a unique sharable portfolio link. Admin can manage users, templates, and portfolio data.</p> <p><strong>How PHP + MariaDB used:</strong> PHP handles backend authentication, template rendering, and form processing. MariaDB stores user accounts, portfolio details, skills, projects, testimonials, verification tokens, and template information. CRUD operations manage all dynamic sections. PDO is used for secure queries, and relational tables ensure each user’s portfolio data is linked correctly.</p> <p><strong>Modules:</strong> Login/Signup with email verification, User Dashboard, Portfolio Creation Form, Template Selection, Dynamic Portfolio Generation, Admin Panel, Sharable Link System, Privacy Settings, and Limit of 3 Portfolios per User.</p> <p><strong>Challenges:</strong> Designing dynamic templates that accept user input, managing relational tables for user data (skills, projects, testimonials), implementing secure login + verification flow, ensuring responsive layout for templates, linking template selection with portfolio generation, and creating unique, secure sharable URLs.</p>
+              <div class="mt-2">
+                <a href="https://github.com/zaidhabib972/" target="_blank" class="btn btn-primary btn-sm">GitHub Repo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project cards grid -->
+        <div class="row g-4">
+          <!-- Project Card Template - duplicate/update with real projects -->
+          <div class="col-md-4" data-aos="fade-up">
+  <article class="project-card card h-100 shadow-sm">
+  <img src="dashboard.png" alt="Excel Dashboard" class="card-img-top" loading="lazy">
+  <div class="card-body d-flex flex-column">
+    <h5 class="card-title">Excel Dashboard – Film Rental Store</h5>
+    <p class="card-text">
+      A fully interactive Excel dashboard designed to analyze film rental store performance. 
+      It includes dynamic charts, pivot tables, slicers, and automated KPIs such as total revenue, 
+      most rented genres, top customers, and rental trends over time. The project focuses on data 
+      cleaning, dataset structuring, and dashboard automation to create business-ready insights. 
+      Built as a learning project to strengthen Excel analytics and visualization skills.
+    </p>
+    <p class="mt-auto mb-2"><strong>Tech:</strong> Microsoft Excel, Pivot Tables, Charts, Data Cleaning</p>
+    <div class="d-flex gap-2">
+      <a href="#" class="btn btn-sm btn-outline-secondary" target="_blank">GitHub</a>
+      <a href="#" class="btn btn-sm btn-primary">View Details</a>
+    </div>
+  </div>
+</article>
+
+          </div>
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+           <article class="project-card card h-100 shadow-sm">
+  <img src="dashboard 2.png" alt="Store Analysis Dashboard" class="card-img-top" loading="lazy">
+  <div class="card-body d-flex flex-column">
+    <h5 class="card-title">Excel Dashboard – Store Analysis</h5>
+    <p class="card-text">
+      A comprehensive Excel-based dashboard created to analyze store performance across sales, 
+      customers, and product categories. The dashboard includes interactive slicers, pivot tables, 
+      dynamic charts, and automated KPIs such as total sales, profit trends, top-selling products, 
+      and customer segmentation. This learning project focuses on transforming raw data into 
+      actionable insights by applying data cleaning, advanced formulas, and visualization techniques. 
+      It helps users quickly understand business performance, identify key patterns, and make 
+      data-driven decisions using Excel without relying on external tools.
+    </p>
+    <p class="mt-auto mb-2"><strong>Tech:</strong> Microsoft Excel, Pivot Tables, Charts, Power Query</p>
+    <div class="d-flex gap-2">
+      <a href="#" class="btn btn-sm btn-outline-secondary" target="_blank">GitHub</a>
+      <a href="#" class="btn btn-sm btn-primary">View Details</a>
+    </div>
+  </div>
+</article>
+
+          </div>
+
+          <!-- Add more project cards as needed -->
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section id="stats" class="py-5">
+      <div class="container text-center" data-aos="fade-up">
+        <h2 class="mb-4">Numbers</h2>
+        <div class="row g-4 justify-content-center">
+          <div class="col-6 col-md-3">
+            <div class="stat-card p-3">
+              <h3 class="count" data-target="12">0</h3>
+              <p>Completed Projects</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-card p-3">
+              <h3 class="count" data-target="250">0</h3>
+              <p>Hours Practised</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-card p-3">
+              <h3 class="count" data-target="2">0</h3>
+              <p>Years of Learning</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- TESTIMONIALS -->
+<section id="testimonials" class="py-5 bg-light">
+  <div class="container" data-aos="fade-up">
+    <h2 class="mb-4">Testimonials</h2>
+
+    <div class="row g-3">
+      
+      <!-- Testimonial 1 -->
+      <div class="col-md-6">
+        <div class="card p-3">
+          <div class="d-flex gap-3 align-items-start">
+            <img src="saleem shah shb.jpg" alt="Client photo" class="rounded-circle testimonial-avatar" width="56" height="56" loading="lazy">
+            <div>
+              <p class="mb-1"><strong>Client / Instructor</strong></p>
+              <p class="text-muted mb-0">
+                “Zaid followed instructions well and completed the task with dedication. 
+                His understanding of PHP and web structure is improving steadily.”
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="col-md-6">
+        <div class="card p-3">
+          <div class="d-flex gap-3 align-items-start">
+            <img src="/images/placeholder-avatar.jpg" alt="Client photo" class="rounded-circle testimonial-avatar" width="56" height="56" loading="lazy">
+            <div>
+              <p class="mb-1"><strong>Teacher / Project Guide</strong></p>
+              <p class="text-muted mb-0">
+                “Good improvement in every assignment. Zaid understands basic concepts well 
+                and is consistent in learning new skills like dashboards and analysis.”
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-5">
+      <div class="container" data-aos="fade-up">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <h2>Contact</h2>
+            <p class="lead">Want to work together? Send me a message.</p>
+
+            <form id="contactForm" method="post" action="/php/contact.php" novalidate>
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" name="name" class="form-control" required aria-required="true">
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-control" required aria-required="true">
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea id="message" name="message" class="form-control" rows="5" required aria-required="true"></textarea>
+              </div>
+              <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">Send Message</button>
+                <a href="mailto:zaidhabib972@gmail.com" class="btn btn-outline-secondary">Email</a>
+                <a href="https://wa.me/923307974444" target="_blank" class="btn btn-success">WhatsApp</a>
+              </div>
+            </form>
+
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card p-3 shadow-sm">
+              <h5>Contact Details</h5>
+              <p class="mb-1"><strong>Email:</strong> <a href="mailto:zaidhabib972@gmail.com">zaidhabib972@gmail.com</a></p>
+              <p class="mb-1"><strong>Phone:</strong> +92 330 797 4444</p>
+              <p class="mb-1"><strong>LinkedIn:</strong> <a href="#">linkedin.com/in/zaidhabib</a></p>
+              <p class="mb-0"><strong>GitHub:</strong> <a href="https://github.com/zaidhabib972" target="_blank">github.com/zaidhabib972</a></p>
+            </div>
+
+            <div class="mt-3 card p-3 shadow-sm">
+              <h6>Quick Actions</h6>
+              <div class="d-flex gap-2 flex-wrap">
+                <a href="Muhammad Zaid habib_cv..pdf" class="btn btn-outline-primary btn-sm" download>Download Resume (PDF)</a>
+                <a href="https://github.com/zaidhabib972" target="_blank" class="btn btn-dark btn-sm">View GitHub</a>
+                <a href="#projects" class="btn btn-secondary btn-sm">See Projects</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-4 bg-dark text-white">
+    <div class="container text-center">
+      <p class="mb-1">&copy; <span id="year"></span> Muhammad Zaid Habib — Web Developer & Data Analyst</p>
+      <p class="mb-0 small">Built with PHP, MariaDB, JavaScript — Hosted on GitHub Pages (static) or any PHP host.</p>
+    </div>
+  </footer>
+
+  <!-- JS: Bootstrap, AOS, Main -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="C:\xampp\htdocs\me\js\main.js"></script>
+  <script>
+    AOS.init({once:true, duration:700});
+  </script>
+</body>
+</html>
